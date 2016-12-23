@@ -17,3 +17,5 @@ y=Rx+t+d
 Database management is resource consuming. An appealing solution is to export database services to the cloud, which raises privacy concerns, too. Among the existing approaches, crypto-index is a simple solution (not so secure) that transforms a domain to a set of random IDs. It is easy to process queries on transformed data. However, the result may have low precision. In this task, you will implement a simple crypto-index method and experiment wtih single-dimensional range query on transformed data.
 
 For simplicity, let's work on the continuous data. Assume one dimensional of the data, for example, the three datasets you have seen, is in the domain [min, max]. The crypto-index method partitions the domain into a few bins and use a random ID to represent each bin. Correspondingly, when you process a range query, say finding records with dimension i in the range [u, v], you will transform the query to the transformed data domain as "finding records with dimension i in the set of bin IDs [id1, id2,...]".
+
+Reference: http://cecs.wright.edu/~keke.chen/cloud/labs/privacy/privacy.html

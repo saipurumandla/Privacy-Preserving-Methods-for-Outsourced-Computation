@@ -11,3 +11,9 @@ Let's define GDP first. The data for mining is often a table with k columns and 
 Let R be a secret random orthogonal k by k matrix (so that R times R's transpose is the identity matrix I). Note that R can be generated with simple methods like QR decomposition or eigendecomposition of random k by k matrices, which can be found in some Python or Java libraries. Let t be a secret random k-element column vector, which is drawn from some domain close to the normalized x, e.g., the normal distribution N(0,1). Both R and t should be shared by all records. Let d be a randomly generated k-element noise vector, individually for each record, drawn from a normal distribution N(0, σ2), where the variance σ2 is determined by the user. Let y be the perturbed vector for the original vector x. The geometric data perturbation is defined as
 
 y=Rx+t+d
+
+# Part 2: Crypto-index for range query processing
+
+Database management is resource consuming. An appealing solution is to export database services to the cloud, which raises privacy concerns, too. Among the existing approaches, crypto-index is a simple solution (not so secure) that transforms a domain to a set of random IDs. It is easy to process queries on transformed data. However, the result may have low precision. In this task, you will implement a simple crypto-index method and experiment wtih single-dimensional range query on transformed data.
+
+For simplicity, let's work on the continuous data. Assume one dimensional of the data, for example, the three datasets you have seen, is in the domain [min, max]. The crypto-index method partitions the domain into a few bins and use a random ID to represent each bin. Correspondingly, when you process a range query, say finding records with dimension i in the range [u, v], you will transform the query to the transformed data domain as "finding records with dimension i in the set of bin IDs [id1, id2,...]".
